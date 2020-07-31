@@ -1,11 +1,55 @@
 <html>
+    
+
+<SCRIPT language=JavaScript> 
+ 
+function password() { 
+ 
+var testV = 1; 
+ 
+var pass1 = prompt('请输入密码:',''); 
+ 
+while (testV < 3) { 
+ 
+if (!pass1) 
+ 
+history.go(-1); 
+ 
+if (pass1 == "123456") { 
+ 
+alert('密码正确!'); 
+ 
+break; 
+ 
+} 
+ 
+testV+=-1; 
+ 
+var pass1 = prompt('密码错误!请重新输入:'); 
+ 
+} 
+ 
+if (pass1!="password" & testV ==3) 
+ 
+history.go(-1); 
+ 
+return " "; 
+ 
+} 
+ 
+document.write(password()); 
+ 
+
+</SCRIPT>
+ 
+
   <head>
-    <title>GO-REST-WOL</title>
+    <title>远程开机</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style>
       .hideMe {
         display: none;
@@ -16,7 +60,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12" role="main">
-          <h1><span class="fa fa-qq"></span> GO-REST-WOL <small>Your little Monster to Wakeup the lazy one</small></h1>
+          <h1><span class="fa fa-qq"></span> 远程唤醒电脑-WOL <small>请在服务器上绑定静态arp mac对应</small></h1>
             <div id="snackbar" class="alert hideMe">
               Message comes here
             </div>
@@ -24,16 +68,16 @@
                 <thead>
                   <tr>
                     <th></td>
-                    <th>Computer</th>
-                    <th>MAC Adress</th>
-                    <th>Broadcast IP Address</th>
+                    <th>电脑名称</th>
+                    <th>MAC 地址</th>
+                    <th>广播 IP Address</th>
                     <th>API URL</th>
                   </tr>
                 </thead>
                 <tbody>
                   {{range .}}
                   <tr>
-                    <td class="align-middle"><b><button id="bn_{{.Name}}" name="wolbutton" value="{{.Name}}" class="btn btn-success btn-sm" onclick="$.wakeUpComputerByName('{{.Name}}')">WakeUp</button></b></td>
+                    <td class="align-middle"><b><button id="bn_{{.Name}}" name="wolbutton" value="{{.Name}}" class="btn btn-success btn-sm" onclick="$.wakeUpComputerByName('{{.Name}}')">唤醒</button></b></td>
                     <td class="align-middle">{{.Name}}</td>
                     <td class="align-middle">{{.Mac}}</td>
                     <td class="align-middle">{{.BroadcastIPAddress}}</td>
@@ -78,8 +122,8 @@
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <script>
